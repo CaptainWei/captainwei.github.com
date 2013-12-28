@@ -2,10 +2,13 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://CaptainWei.github.io
+title:  Wilbert 
+subtitle: Talk is cheap,show me the code
+mottofirst: 蚓无爪牙之利，筋骨之强，上食埃土，下饮黄泉，用心一也。
+mottosecond: 蟹六跪而二螯，非蛇鳝之穴无可寄托者，用心躁也。
+mottoauthor: --荀子
+author: Liu Wei 
 simple_search: http://google.com/search
 description:
 
@@ -13,7 +16,7 @@ description:
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
 # Additionally, %o will give you the ordinal representation of the day
-date_format: "ordinal"
+date_format: "%b %e" 
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
@@ -46,7 +49,7 @@ pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 
-titlecase: true       # Converts page and post titles to titlecase
+titlecase: false      # Converts page and post titles to titlecase
 
 # list each of the sidebar modules you want to include, in the order you want them to appear.
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
@@ -89,12 +92,23 @@ pinboard_count: 3
 delicious_user:
 delicious_count: 3
 
+# duoshuo comments
+#duoshuo_comments: true
+#duoshuo_short_name: captainwei
+
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+#disqus_short_name:
+#disqus_show_comment_count: false
+
+# comment and share
+comment_share: true
 
 # Google Analytics
 google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+weibo_user: liuwei
+dribbble_user: allenhsu
+weibo_share: true
