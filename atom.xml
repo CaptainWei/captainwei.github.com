@@ -4,7 +4,7 @@
   <title><![CDATA[Leo]]></title>
   <link href="http://CaptainWei.github.io/atom.xml" rel="self"/>
   <link href="http://CaptainWei.github.io/"/>
-  <updated>2013-12-29T05:43:03+08:00</updated>
+  <updated>2013-12-29T05:53:12+08:00</updated>
   <id>http://CaptainWei.github.io/</id>
   <author>
     <name><![CDATA[Liu Wei]]></name>
@@ -78,6 +78,8 @@
 <p>忙活到现在，脑子已经严重不够用了，所以写出来东西逻辑上就有问题，再加上也不擅长码字，将就着看下吧，大家伙。</p>
 
 <p><code>Markdown</code>用的也不是很熟，blog很多方面也待改进，这些都说明:这个blog潜力还很大&hellip;</p>
+
+<p>注意下面的评论是默认开启同步到相关平台的，可以选择关闭的。</p>
 ]]></content>
   </entry>
   
