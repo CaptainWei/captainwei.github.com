@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Leo</title>
+	<title>Http协议<一>―OSI大局观来掌控 - Leo</title>
 	<meta name="author" content="Liu Wei">
 
 	
-	<meta name="description" content="2014 Jan 7 Httpprotocol,OSI Http协议―OSI大局观来掌控 说起OSI，不由得想起了大学时候的教计算机网络的老师，如果没有没有记错，应该是石坚石教授，第一次上课，我就根据他的外形给他取了一个很配的名号――「金刚狼」。对于一个本科是EE的学生来说， &hellip;">
+	<meta name="description" content="Http协议―OSI大局观来掌控 说起OSI，不由得想起了大学时候的教计算机网络的老师，如果没有没有记错，应该是石坚石教授，第一次上课，我就根据他的外形给他取了一个很配的名号――「金刚狼」。对于一个本科是EE的学生来说，那期间学的课程基本上都是跟数学相关，作为学渣的我， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -17,7 +17,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Leo" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CaptainWei.github.io/">
+	<link rel="canonical" href="http://CaptainWei.github.io/blog/2014/01/07/httpprotocol-osi/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -81,45 +81,9 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner">
-<div itemscope itemtype="http://schema.org/Blog">
-
-<section class="archives">
-
-
-
-  
-    <h1 class="year">2014</h1>
-    
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-07T00:54:53+08:00" data-updated="true" itemprop="datePublished">Jan  7</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/httpprotocol-osi/'>Httpprotocol,OSI</a>
-
-
-</div>
-		
-           
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/01/07/httpprotocol-osi/" itemprop="url">Http协议<一>―OSI大局观来掌控</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>说起<em>OSI</em>，不由得想起了大学时候的教计算机网络的老师，如果没有没有记错，应该是石坚石教授，第一次上课，我就根据他的外形给他取了一个很配的名号――「金刚狼」。对于一个本科是EE的学生来说，那期间学的课程基本上都是跟数学相关，作为学渣的我，也当然一直没有明白数学与通信之间的关系&hellip;回过来说说石教授教的《计算机网络》这门课，虽然这是一门专业选修课，但应该是我大学里面上的最认真的一门课了，还有一门应该是《数字逻辑电路》，究其原因，应该是我会对自己感兴趣的东西投入相对多的精力(所以说我当初就应该是进CS，而不是EE)。</p>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Http协议<一>―OSI大局观来掌控</h1>
+	<div class="entry-content" itemprop="articleBody"><p>说起<em>OSI</em>，不由得想起了大学时候的教计算机网络的老师，如果没有没有记错，应该是石坚石教授，第一次上课，我就根据他的外形给他取了一个很配的名号――「金刚狼」。对于一个本科是EE的学生来说，那期间学的课程基本上都是跟数学相关，作为学渣的我，也当然一直没有明白数学与通信之间的关系&hellip;回过来说说石教授教的《计算机网络》这门课，虽然这是一门专业选修课，但应该是我大学里面上的最认真的一门课了，还有一门应该是《数字逻辑电路》，究其原因，应该是我会对自己感兴趣的东西投入相对多的精力(所以说我当初就应该是进CS，而不是EE)。</p>
 
 <p><em>Http</em>协议虽然说是一个应用层协议，一般只要知道有这个东西就行了。但对于一个真正喜欢琢磨的人来说，这是远远不够的。正如现在绝大多数面向对象程序语言一样，都讲究的是抽象、封装，上层不用知道下层是做什么的，怎么实现的。当然，这对于一个刚入门的新手来说，这是很好的。因为你就不用花费大量时间学学习太多东西，往往看些API就行了，可以让你很快的融入团队开发。但是当你碰到一些问题的时候，你往往解决问题的方法就是试探行的，先试试这样能不能解决，再试试那样能不能解决。但是当你对这些东西的底层足够了解的时候，你解决问题也就能精准定位了，同时能知道怎么提高软件工作效率。我管后一种人叫做――<em>Cooker</em>。</p>
 
@@ -221,113 +185,38 @@ o8 35 ： RARP请求/应答</p></blockquote>
 <p>目前，基于<em>OSI</em>模型的<em>Http</em>协议分析就写完了，后面我将来具体分析<em>Http</em>协议。如有错误欢迎指正，如果认为内容还可以，请点个赞吧。</p>
 
 <h2>PS:转载请保留出处,毕竟花费了很多时间</h2>
-
-		
-		
-	</div>
+</div>
 
 </article>
 
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+	
+	<a class="addthis_button_sinaweibo"></a>
+	
+	
+	
+	<a class="addthis_button_twitter"></a>
+	
+	
+	
+	<a class="addthis_button_compact"></a>
+	<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
 
-
-  
-    <h1 class="year">2013</h1>
     
+        <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1881728"></script>
+<!-- UY END -->
 
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-29T05:30:19+08:00" data-updated="true" itemprop="datePublished">Dec 29</time></div>
-		<div class="tags">
-
+    
 </div>
-		
-           
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/12/29/shi-jian-bie-zhuang-wo-yao/" itemprop="url">时间 别撞我腰</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<h2>时间，别撞我腰</h2>
-
-<p>一年又过去了，时间开着他自己那辆拉轰的法拉利飙到我面前，说，小子，该还账了。我摸了摸空瘪瘪的「腰包」，向他尴尬的一笑，他也似乎懂了，油门一加，顺势把腰包一扯，嚷了一句：我去年买了个包&hellip;然后，我腰就开始疼了。是啊，腰包的带子都还没解呢，他怎么能这么粗鲁呢&hellip;</p>
-
-<p><strong>年初的时候</strong>，blog他娘说：在金秋，那个收获的季节，你将拥有一个小blog，最迟，也会随着帝都的雪一起到来。金秋早已过去，本来应该降落在帝都的雪，却被天津截获，那时候就想，我的小blog应该夭折了吧。</p>
-
-<p>可是，今天小blog却突然降临了，我摸摸脑门想了一会，觉得应该是如下原因吧：</p>
-
-<ul>
-<li>blog他娘觉得说过的话就要兑现，咬咬牙，生吧！</li>
-<li>2013年，刷了一年书，明年应该是开始刷项目了，github跟blog恰好同源，就建立个blog来敦促自己刷项目。</li>
-<li><code>@经常间歇性思考的猫</code> 在这个月中的时候，让我尝试写下简历，之前觉得自己状态都还比较好，通过刷书积累了不少干货，可一到下笔写的时候，突然不知道在应该简历上写些神马好，顿时慌了。那时觉得应该通过文字性的东西来把平时思考的东西记录下来，将来回顾，也就会很有条理，同时还可以将两个时期对同一问题的思考深度做下对比。</li>
-<li>etc</li>
-</ul>
 
 
-<p>年初想的是租个空间，弄个域名，然后再用<code>Wordpress</code>建个自己blog。实际做的时候，很多想法都跟年初的不同了，由于明年主要是想在github上刷开源项目，github给每个用户大概300M空间，同时还给每个用户一个二级域名，所以我也就没想着去另外租用空间来建blog了。剩下要做的就是搭建blog和弄个自己的域名来绑定原有的二级域名了。</p>
-
-<p>建站就不多说了，本来是想用<code>github + jeykll</code>的，后来脑子一热，又换成<code>github + octopress</code>了，两者区别不大，教材也是网上一抓一大把。相对比较难的是对站点风格进行个性化设置，由于我css功底一向不行，所以目前这个状态如果吓到大家，大家多体谅下。其实建了三款风格的blog，另外两款属于简约型的，但简约型的太难控制，待我<code>css</code>纯熟后，会换个风格。</p>
-
-<p>域名的话，在<a href="http://www.godaddy.com/">狗爹</a>上选了个.me的域名:<a href="http://UCfind.me">UCfind.me</a>,意思就是<em>you can find me</em>。这个在付款的时候遇到了点麻烦，本来打算租用三年的，第一次进付款页面的时候，需要40刀，安装支付宝重启浏览器后，一下变成50刀了，瞬间没弄懂，于是就改成一年，10刀，想着明年再续费。用支付宝付款的时候，由于涉及货币转换，(狗爹是国外货)，得让我用身份证和姓名验证下，结果验证失败，说名字与证件不匹配，莫非我被除名了，有点忧伤&hellip;实在不行就只能借用别人VISA卡来弄了，暂时就用github分配的二级域名吧。</p>
-
-<p>评论系统用的是第三方插件，原来的<code>Dribbble</code>支持的是国外的社交网站，由于方校长的存在，导致咱们都被关在墙内，用起来不太友好。现在换成友言了，适合国内用户,支持<code>sina，qq</code>神马的。</p>
-
-<p>年末了，总是要对一年来个总结。总的来说还是按照年初计划来走的，至少没走偏。年初定的主要是:</p>
-
-<ul>
-<li>想明白自己要走的路</li>
-<li>多读点书</li>
-<li>自己思考编程本质是什么，因为隐约就觉得<code>掌握几门语言 != 编程</code> &amp;&amp; <code>代码的堆积 != 编程</code></li>
-<li>做一些开源项目</li>
-</ul>
 
 
-<p>现在看来，前3点做的还算满意。当初说的多读点书，我现在来理解的话，目的是为了来了解计算机体系结构。因为从入行那天起，我感兴趣的就是一个个程序如何被执行以及它跟操作系统的关系。</p>
-
-<p>对于编程本质我现在更想换成说是计算机学习的本质：</p>
-
-<ul>
-<li>计算机数学，变换成计算机思想就是<code>算法+数据结构</code>。</li>
-<li>系统，对于系统的理解我更愿意说成是对计算机体系结构的理解，这东西跟<code>算法+数据结构</code>一样，属于内功型的。可能一朝一夕是外现不出来的，不知道在具体编程中该用在哪里，所以导致在还没入门就放弃了。</li>
-<li>语言，这东西在这三个钟是最不看重的，如果上面两样掌握好了，这玩意就跟你学好大学微积分后，再去做高考神马求极限题一样，分分钟的事。</li>
-</ul>
-
-
-<p>最后一个可以说是今年一点未动的，因为看一些计算机体系结构书的时候，感觉是还大学的账，一本书往往刷几遍才看懂那上面的白纸黑字，至于领悟，意味着要刷更多遍以及查更多资料，所以导致时间严重不够分出来。再就是觉得写代码其实就是对思想、问题理解的一种转换,如果思想一点都没有，就想通过训练来理解，就跟背公式一样没意思。所以项目计划也就一直停滞。</p>
-
-<p>总之，一年已经过去，是否满意，是否充实，只有自己内心才知道。</p>
-
-<p>目前来看，14年定的计划应该是13年计划倒置过来，倒置过来的顺序也就是优先级了。同时也得把英语加上，至于为什么要加上英语，当你采用<code>github + octopress</code>来建个站就知道了，没有人会为你时时刻刻提供翻译服务的。</p>
-
-<ul>
-<li>开源项目 &amp;&amp; 英语</li>
-<li>计算机数学 &amp;&amp; 系统</li>
-</ul>
-
-
-<p>忙活到现在，脑子已经严重不够用了，所以写出来东西逻辑上就有问题，再加上也不擅长码字，将就着看下吧，大家伙。</p>
-
-<p><code>Markdown</code>用的也不是很熟，blog很多方面也待改进，这些都说明:这个blog潜力还很大&hellip;</p>
-
-<p>注意下面的评论是默认开启同步到相关平台的，可以选择关闭的。</p>
-
-		
-		
-	</div>
-
-</article>
-
-</section>
-</div>
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>

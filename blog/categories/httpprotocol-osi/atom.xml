@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Leo]]></title>
-  <link href="http://CaptainWei.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Httpprotocol,OSI | Leo]]></title>
+  <link href="http://CaptainWei.github.io/blog/categories/httpprotocol-osi/atom.xml" rel="self"/>
   <link href="http://CaptainWei.github.io/"/>
-  <updated>2014-01-07T01:05:13+08:00</updated>
+  <updated>2014-01-07T01:08:28+08:00</updated>
   <id>http://CaptainWei.github.io/</id>
   <author>
     <name><![CDATA[Liu Wei]]></name>
@@ -27,7 +27,7 @@
 <p><em>OSI</em>模型，即开放式通信系统互联参考模型（Open System Interconnection Reference Model）。建议看看<em>wikipedia</em>中的一些基础介绍<a href="http://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B">OSI模型</a>。</p>
 
 <p>虽然说官方文档上介绍OSI是七层模型，依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层，但是我们实际在使用的时候，一般是当做四层来理解，因为有些层实际使用中是可以合在一起的，所以四层自顶向下依次为应用层、运输层、网络层、链路层。这之间的信息交互如下图：
-<img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-1.png" alt="" /></p>
+<img src="/images/HttpProtocol_OSI/Http1-1.png" alt="" /></p>
 
 <center>图1-1</center>
 
@@ -42,7 +42,7 @@ ssize_t write(int fd, const void *buf, size_t count)</p></blockquote>
 <p>socket在网络编程中是创建一个端点，为套接字返回一个文件描述符。这符合<em>UNIX</em>设计中<code>一切皆文件</code>的思想，实际上的通信相当于服务器端的<em>socket</em>和客户端的<em>socket</em>来进行通信，在创建socket的时候，会通过<em>domain、type、protocol</em>来选择创建的协议类型，<em>connect</em>相当于针对已有协议来创建连接。</p>
 
 <p>当然，这里并不是说<em>socket()、connect()</em>函数就是对应于哪一层协议，可以把<em>socket()</em>创建的套接字当成是应用层和运输层之间的一个抽象接口，你可以理解为当<em>socket()</em>创建套接字后，当你在应用层使用这个<em>socket</em>，当使用<em>write()</em>函数时，此时注意<em>UNIX</em>中<code>一切皆文件</code>的思想，将<em>socket()</em>创建的<em>fd</em>用于<em>write</em>函数,此时就相当于操作文件来操作网络了，同时你并不需要知道它是如何实现的。<em>socket</em>对应的抽象接口如下图：
-<img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-2.png" alt="" /></p>
+<img src="/images/HttpProtocol_OSI/Http1-2.png" alt="" /></p>
 
 <center>图1-2</center>
 
@@ -57,26 +57,26 @@ ssize_t write(int fd, const void *buf, size_t count)</p></blockquote>
 <p>下面，我将用<em>wireshark</em>这款软件，来分析一下数据包。如果需要下载该软件，可以<em>google</em>一些，网上资源很多。</p>
 
 <p>首先我们来探讨一下关于数据封装的基本规则，<em>http</em>协议是基于<em>TCP</em>的：
-<img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-3.png" alt="" /></p>
+<img src="/images/HttpProtocol_OSI/Http1-3.png" alt="" /></p>
 
 <center>图1-3</center>
 
 
 <p>图1-3选自《TCP/IP详解(卷1)》，上图详细说明了各个层数据报的封装关系。下面将使用wireshark来分析各个数据包，这里就不会详细涉及<em>TCP</em>协议的三次握手行为。</p>
 
-<p><img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-4.png" alt="" /></p>
+<p><img src="/images/HttpProtocol_OSI/Http1-4.png" alt="" /></p>
 
 <center>图1-4</center>
 
 
 <p>图1-4中红框中的内容代表TCP的三次握手行为，请求的网站是<a href="http://captainwei.github.io/blog/archives/">我的博客</a>，当服务器端收到确认报文<em>ACK</em>后，客户端便向服务器发送<em>Get</em>请求，如图，发送的是<em>GET /blog/archives/ HTTP/1.1</em>，服务器根据请求内容返回相应内容，当然，这些内容都是变成二进制，然后切割成对于大小的数据包，再进行封装，变成相应的数据报在网络中交流。其中包括一些<em>Http</em>报文格式，这个放在接下来章节说明。当然，发送的<em>http</em>请求肯定不止一个，因为一个网站包括<em>css、js</em>等各种资源，所以请求会发送几次，如下图。
-<img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-5.png" alt="" /></p>
+<img src="/images/HttpProtocol_OSI/Http1-5.png" alt="" /></p>
 
 <center>图1-5</center>
 
 
 <p>我们现在主要看下各个报文头部对于的内容，对应于图1-3。我只找一个数据报文来看，其余的除了用户数据不同，其他头部都相同。
-<img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-6.png" alt="" /></p>
+<img src="/images/HttpProtocol_OSI/Http1-6.png" alt="" /></p>
 
 <center>图1-6</center>
 
@@ -93,7 +93,7 @@ Dst: Elitegro_21:16:b9 (c8:9c:dc:21:16:b9)</p></blockquote>
 o8 35 ： RARP请求/应答</p></blockquote>
 
 <p>如果还想知道更具体的内容，请看《TCP/IP详解(卷1)》中的第二章。现在来看IP数据报首部，如下：
-<img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-7.png" alt="" /></p>
+<img src="/images/HttpProtocol_OSI/Http1-7.png" alt="" /></p>
 
 <center>图1-7</center>
 
@@ -102,7 +102,7 @@ o8 35 ： RARP请求/应答</p></blockquote>
 
 <p>再来看看TCP首部数据报，也是20<em>bytes</em>，具体字节含义，请看《TCP/IP详解(卷1)》中的第十七章。其中，最主要的前4<em>bytes</em>分别代表源端口号和目的端口号。如下图：</p>
 
-<p><img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-8.png" alt="" /></p>
+<p><img src="/images/HttpProtocol_OSI/Http1-8.png" alt="" /></p>
 
 <center>图1-8</center>
 
@@ -110,7 +110,7 @@ o8 35 ： RARP请求/应答</p></blockquote>
 <p>服务器上的端口用的是80，对应的十六进制为00 50；目的端口是我本地浏览器上与之对应的端口40975，对应的十六进制为a0 0f，恰好跟0200行前4<em>bytes</em>对应上。当然，不是所有网页对应的本地服务器都是40975这个端口，首先，这个端口是每次建立socket连接是，随机分配的端口，其次，每个不同的网页，例如<em>google</em>，你可以当他是一个新的应用程序，所以用的是另外分配的一个随机端口，这样，从而与服务器的信息交互，通过<em>ip</em>到达我们本地计算机后，能根据端口来进行正确的数据处理。</p>
 
 <p>最后，就是用户数据报部分了，详情如下：
-<img src="http://CaptainWei.github.io/images/HttpProtocol_OSI/Http1-9.png" alt="" /></p>
+<img src="/images/HttpProtocol_OSI/Http1-9.png" alt="" /></p>
 
 <center>图1-9</center>
 
@@ -120,76 +120,6 @@ o8 35 ： RARP请求/应答</p></blockquote>
 <p>目前，基于<em>OSI</em>模型的<em>Http</em>协议分析就写完了，后面我将来具体分析<em>Http</em>协议。如有错误欢迎指正，如果认为内容还可以，请点个赞吧。</p>
 
 <h2>PS:转载请保留出处,毕竟花费了很多时间</h2>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[时间 别撞我腰]]></title>
-    <link href="http://CaptainWei.github.io/blog/2013/12/29/shi-jian-bie-zhuang-wo-yao/"/>
-    <updated>2013-12-29T05:30:19+08:00</updated>
-    <id>http://CaptainWei.github.io/blog/2013/12/29/shi-jian-bie-zhuang-wo-yao</id>
-    <content type="html"><![CDATA[<h2>时间，别撞我腰</h2>
-
-<p>一年又过去了，时间开着他自己那辆拉轰的法拉利飙到我面前，说，小子，该还账了。我摸了摸空瘪瘪的「腰包」，向他尴尬的一笑，他也似乎懂了，油门一加，顺势把腰包一扯，嚷了一句：我去年买了个包&hellip;然后，我腰就开始疼了。是啊，腰包的带子都还没解呢，他怎么能这么粗鲁呢&hellip;</p>
-
-<p><strong>年初的时候</strong>，blog他娘说：在金秋，那个收获的季节，你将拥有一个小blog，最迟，也会随着帝都的雪一起到来。金秋早已过去，本来应该降落在帝都的雪，却被天津截获，那时候就想，我的小blog应该夭折了吧。</p>
-
-<p>可是，今天小blog却突然降临了，我摸摸脑门想了一会，觉得应该是如下原因吧：</p>
-
-<ul>
-<li>blog他娘觉得说过的话就要兑现，咬咬牙，生吧！</li>
-<li>2013年，刷了一年书，明年应该是开始刷项目了，github跟blog恰好同源，就建立个blog来敦促自己刷项目。</li>
-<li><code>@经常间歇性思考的猫</code> 在这个月中的时候，让我尝试写下简历，之前觉得自己状态都还比较好，通过刷书积累了不少干货，可一到下笔写的时候，突然不知道在应该简历上写些神马好，顿时慌了。那时觉得应该通过文字性的东西来把平时思考的东西记录下来，将来回顾，也就会很有条理，同时还可以将两个时期对同一问题的思考深度做下对比。</li>
-<li>etc</li>
-</ul>
-
-
-<p>年初想的是租个空间，弄个域名，然后再用<code>Wordpress</code>建个自己blog。实际做的时候，很多想法都跟年初的不同了，由于明年主要是想在github上刷开源项目，github给每个用户大概300M空间，同时还给每个用户一个二级域名，所以我也就没想着去另外租用空间来建blog了。剩下要做的就是搭建blog和弄个自己的域名来绑定原有的二级域名了。</p>
-
-<p>建站就不多说了，本来是想用<code>github + jeykll</code>的，后来脑子一热，又换成<code>github + octopress</code>了，两者区别不大，教材也是网上一抓一大把。相对比较难的是对站点风格进行个性化设置，由于我css功底一向不行，所以目前这个状态如果吓到大家，大家多体谅下。其实建了三款风格的blog，另外两款属于简约型的，但简约型的太难控制，待我<code>css</code>纯熟后，会换个风格。</p>
-
-<p>域名的话，在<a href="http://www.godaddy.com/">狗爹</a>上选了个.me的域名:<a href="http://UCfind.me">UCfind.me</a>,意思就是<em>you can find me</em>。这个在付款的时候遇到了点麻烦，本来打算租用三年的，第一次进付款页面的时候，需要40刀，安装支付宝重启浏览器后，一下变成50刀了，瞬间没弄懂，于是就改成一年，10刀，想着明年再续费。用支付宝付款的时候，由于涉及货币转换，(狗爹是国外货)，得让我用身份证和姓名验证下，结果验证失败，说名字与证件不匹配，莫非我被除名了，有点忧伤&hellip;实在不行就只能借用别人VISA卡来弄了，暂时就用github分配的二级域名吧。</p>
-
-<p>评论系统用的是第三方插件，原来的<code>Dribbble</code>支持的是国外的社交网站，由于方校长的存在，导致咱们都被关在墙内，用起来不太友好。现在换成友言了，适合国内用户,支持<code>sina，qq</code>神马的。</p>
-
-<p>年末了，总是要对一年来个总结。总的来说还是按照年初计划来走的，至少没走偏。年初定的主要是:</p>
-
-<ul>
-<li>想明白自己要走的路</li>
-<li>多读点书</li>
-<li>自己思考编程本质是什么，因为隐约就觉得<code>掌握几门语言 != 编程</code> &amp;&amp; <code>代码的堆积 != 编程</code></li>
-<li>做一些开源项目</li>
-</ul>
-
-
-<p>现在看来，前3点做的还算满意。当初说的多读点书，我现在来理解的话，目的是为了来了解计算机体系结构。因为从入行那天起，我感兴趣的就是一个个程序如何被执行以及它跟操作系统的关系。</p>
-
-<p>对于编程本质我现在更想换成说是计算机学习的本质：</p>
-
-<ul>
-<li>计算机数学，变换成计算机思想就是<code>算法+数据结构</code>。</li>
-<li>系统，对于系统的理解我更愿意说成是对计算机体系结构的理解，这东西跟<code>算法+数据结构</code>一样，属于内功型的。可能一朝一夕是外现不出来的，不知道在具体编程中该用在哪里，所以导致在还没入门就放弃了。</li>
-<li>语言，这东西在这三个钟是最不看重的，如果上面两样掌握好了，这玩意就跟你学好大学微积分后，再去做高考神马求极限题一样，分分钟的事。</li>
-</ul>
-
-
-<p>最后一个可以说是今年一点未动的，因为看一些计算机体系结构书的时候，感觉是还大学的账，一本书往往刷几遍才看懂那上面的白纸黑字，至于领悟，意味着要刷更多遍以及查更多资料，所以导致时间严重不够分出来。再就是觉得写代码其实就是对思想、问题理解的一种转换,如果思想一点都没有，就想通过训练来理解，就跟背公式一样没意思。所以项目计划也就一直停滞。</p>
-
-<p>总之，一年已经过去，是否满意，是否充实，只有自己内心才知道。</p>
-
-<p>目前来看，14年定的计划应该是13年计划倒置过来，倒置过来的顺序也就是优先级了。同时也得把英语加上，至于为什么要加上英语，当你采用<code>github + octopress</code>来建个站就知道了，没有人会为你时时刻刻提供翻译服务的。</p>
-
-<ul>
-<li>开源项目 &amp;&amp; 英语</li>
-<li>计算机数学 &amp;&amp; 系统</li>
-</ul>
-
-
-<p>忙活到现在，脑子已经严重不够用了，所以写出来东西逻辑上就有问题，再加上也不擅长码字，将就着看下吧，大家伙。</p>
-
-<p><code>Markdown</code>用的也不是很熟，blog很多方面也待改进，这些都说明:这个blog潜力还很大&hellip;</p>
-
-<p>注意下面的评论是默认开启同步到相关平台的，可以选择关闭的。</p>
 ]]></content>
   </entry>
   
